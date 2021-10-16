@@ -14,8 +14,11 @@ build:
   number: 1
   noarch: python
   entry_points:
-    - ward = ward.__main__:run
-  script: {{ PYTHON }} -m pip install . -vv
+    - ward = ward._run:run
+  script:
+    # Removing pyproject.toml here due to pip bug
+    - {{ PYTHON }} -c "__import__('os').unlink('pyproject.toml')"
+    - {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
