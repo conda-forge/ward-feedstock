@@ -14,7 +14,7 @@ build:
   number: 1
   noarch: python
   entry_points:
-    - ward = ward._run:run
+    - ward = ward.__main__:run
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
