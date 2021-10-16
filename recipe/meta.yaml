@@ -12,6 +12,7 @@ source:
 
 build:
   number: 1
+  noarch: python
   entry_points:
     - ward = ward._run:run
   script: {{ PYTHON }} -m pip install . -vv
