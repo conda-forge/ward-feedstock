@@ -11,17 +11,20 @@ source:
   sha256: 4f086c746b0d3d4464cf8ddea54f11fa08e02a784d0fda5bdc9b7f9c9fa63db0
 
 build:
+  skip: true  # [py<36]
   number: 1
-  noarch: python
   entry_points:
     - ward = ward._run:run
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
+  build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
     - pip
     - poetry
-    - python >=3.6
+    - python
   run:
     - click >=7,<9
     - click-completion >=0.5.2,<0.6.0
@@ -30,7 +33,7 @@ requirements:
     - dataclasses >=0.7,<0.9   # [py==36]
     - pluggy >=0.13.1,<2.0.0
     - pprintpp >=0.4.0,<0.5.0
-    - python >=3.6
+    - python
     - rich >=10.0.0,<11.0.0
     - tomli >=1.0.0,<2.0.0
 
