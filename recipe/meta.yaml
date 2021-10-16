@@ -13,7 +13,6 @@ source:
 build:
   number: 1
   noarch: python
-  skip: true   # [py<36 or py2k]
   entry_points:
     - ward = ward._run:run
   script: {{ PYTHON }} -m pip install . -vv
@@ -22,7 +21,7 @@ requirements:
   host:
     - pip
     - poetry
-    - python
+    - python >=3.6
   run:
     - click >=7,<9
     - click-completion >=0.5.2,<0.6.0
@@ -31,7 +30,7 @@ requirements:
     - dataclasses >=0.7,<0.9   # [py==36]
     - pluggy >=0.13.1,<2.0.0
     - pprintpp >=0.4.0,<0.5.0
-    - python
+    - python >=3.6
     - rich >=10.0.0,<11.0.0
     - tomli >=1.0.0,<2.0.0
 
