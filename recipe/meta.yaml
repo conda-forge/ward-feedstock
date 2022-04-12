@@ -1,5 +1,5 @@
 {% set name = "ward" %}
-{% set version = "0.65.0b0" %}
+{% set version = "0.66.0b0" %}
 
 
 package:
@@ -8,34 +8,31 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ward-{{ version }}.tar.gz
-  sha256: 4f086c746b0d3d4464cf8ddea54f11fa08e02a784d0fda5bdc9b7f9c9fa63db0
+  sha256: b36a04c583cba0cbf49ac92143cdf3e20807f5322bac9c2dfa7c884b79f4c657
 
 build:
-  number: 1
+  number: 0
   noarch: python
   entry_points:
     - ward = ward._run:run
   script:
-    # Removing pyproject.toml here due to pip bug
-    - {{ PYTHON }} -c "__import__('os').unlink('pyproject.toml')"
     - {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - poetry
-    - python >=3.6
+    - poetry-core >=1.0.0
+    - python >=3.7.8
   run:
     - click >=7.0.0,<9.0.0
-    - click-completion >=0.5.2,<0.6.0
-    - click-default-group >=1.2.2,<2.0.0
+    - click-completion >=0.5.2
+    - click-default-group >=1.2.2
     - cucumber-tag-expressions >=2.0.0,<5.0.0
-    - dataclasses >=0.7,<0.9
     - pluggy >=0.13.1,<2.0.0
-    - pprintpp >=0.4.0,<0.5.0
-    - python >=3.6
-    - rich >=10.0.0,<11.0.0
-    - tomli >=1.0.0,<2.0.0
+    - pprintpp >=0.4.0
+    - python >=3.7.8
+    - rich >=12.2.0
+    - tomli >=1.0.0,<3.0.0
 
 test:
   imports:
