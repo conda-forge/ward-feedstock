@@ -1,5 +1,5 @@
 {% set name = "ward" %}
-{% set version = "0.66.0b0" %}
+{% set version = "0.66.1b0" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ward-{{ version }}.tar.gz
-  sha256: b36a04c583cba0cbf49ac92143cdf3e20807f5322bac9c2dfa7c884b79f4c657
+  sha256: cd79c54ce6c5cf47e58a672a7724e22de6ea8e63ea6941c4e886321e637e50d8
 
 build:
   number: 0
