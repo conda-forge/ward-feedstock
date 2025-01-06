@@ -7,11 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ward-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/ward-{{ version }}.tar.gz
   sha256: d8aafa4ddb81f4d5787d95bdb2f7ba69a2e89f183feec78d8afcc64b2cd19ee9
 
 build:
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - ward = ward._run:run
@@ -22,7 +22,7 @@ requirements:
   host:
     - pip
     - poetry-core >=1.0.0
-    - python >=3.7.8
+    - python {{ python_min }}
   run:
     - click >=7.0.0,<9.0.0
     - click-completion >=0.5.2
@@ -30,7 +30,7 @@ requirements:
     - cucumber-tag-expressions >=2.0.0,<5.0.0
     - pluggy >=0.13.1,<2.0.0
     - pprintpp >=0.4.0
-    - python >=3.7.8
+    - python >={{ python_min }}
     - rich >=12.2.0
     - tomli >=1.0.0,<3.0.0
 
@@ -42,6 +42,7 @@ test:
     - ward --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://wardpy.com
